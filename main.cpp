@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void process_input(GLFWwindow* window);
+void framebuffer_size_callback(GLFWwindow* window, int width, int height); // this to handle the window resizing
+void process_input(GLFWwindow* window);//this manages the closing input from the window
 
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
@@ -27,7 +27,7 @@ int main()
 
 	glfwMakeContextCurrent(window); //here we make that window object run on the current thread 
 
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  // here we bind the callback fucntion we created
+	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);  // here we bind the callback fucntion with window
 
 	if ((!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))) //here we are checking if glad can load all opengl function pointers or not
 	{
@@ -49,14 +49,14 @@ int main()
 
 void process_input(GLFWwindow* window)
 {
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) //this manages the closing input from the window
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) 
 	{
 		glfwSetWindowShouldClose(window, true);
 	}
 		
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) // this to handle the window resizing
+void framebuffer_size_callback(GLFWwindow* window, int width, int height) 
 {
 	glViewport(0, 0, width, height);
 }
